@@ -1,0 +1,9 @@
+body{
+    background-color: aqua;
+}
+
+#day{
+    display:flex;
+    list-style: none;
+    justify-content: space-evenly;
+}

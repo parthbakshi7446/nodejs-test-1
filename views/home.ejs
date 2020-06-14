@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>habit tracker</title>
+    <link rel="stylesheet" href="css/home.css">
+</head>
+<body>
+    <div>
+        <h1>input new habit</h1>
+        <form method="post" action="/new-habit">
+            <input name="name" type="text" placeholder="enter habit">
+            <input type="Date" name="from">
+            <input type="submit">
+        </form>
+        
+        <h1>
+            Days
+        </h1>
+        <ul id="day">
+            <a href="/day/6"><li><%= new Date().getDate()-6%>-<%= new Date().getMonth()+1 %> </li></a>
+            <a href="/day/5"><li><%= new Date().getDate()-5%>-<%= new Date().getMonth()+1 %>   </li></a>
+            <a href="/day/4"><li><%= new Date().getDate()-4%>-<%= new Date().getMonth()+1 %>   </li></a>
+            <a href="/day/3"><li><%= new Date().getDate()-3%>-<%= new Date().getMonth()+1 %>   </li></a>
+            <a href="/day/2"><li><%= new Date().getDate()-2%>-<%= new Date().getMonth()+1 %>   </li></a>
+            <a href="/day/1"><li><%= new Date().getDate()-1%>-<%= new Date().getMonth()+1 %>   </li></a>
+            <a href="/day/0"><li><%= new Date().getDate() %>-<%= new Date().getMonth()+1 %>   </li></a>
+        </ul>
+        <h1>All habits</h1>
+        <ul id="habit">
+            <% for(habit of habits) {%>
+                <li>
+                    <a href="/habit-show/<%= habit._id %>"><span><%= habit.name %></span></a>
+                    <a href="/habit/?id=<%= habit._id %>&done=1&date=<%= date %>">done</a>
+                    <a href="/habit/?id=<%= habit._id %>&done=2&date=<%= date %>">not done</a>
+                    <a href="/habit/?id=<%= habit._id %>&done=0&date=<%= date %>">none</a>
+                </li>
+            <%}%>
+        </ul>
+    </div>
+</body>
+</html>

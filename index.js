@@ -2,6 +2,12 @@ const express = require('express');
 const app = express();
 const port = 8000;
 
+const Habit = require('./models/habit');
+const History = require('./models/history');
+
+//setting up database
+const db = require('./config/mongoose');
+
 //server look for static files in assets
 app.use(express.static('assets'));
 
@@ -13,9 +19,8 @@ app.set('views', './views');
 //to extract info from url
 app.use(express.urlencoded());
 
-app.get('/',function(req,res){
-    return res.render('home');
-});
+app.use('/',require('./routes'));
+
 
 
 //specify port 
