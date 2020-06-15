@@ -4,8 +4,10 @@ it can create habit and mark it as complete , incomplete and it detects if there
 
 To run this project:
  install all dependencies
+    
     npm install
 to run the server
+    
     npm start
 
 it will be up and running on port 8000
