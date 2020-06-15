@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const habitSchema = new mongoose.Schema({
-    name:{
+    name:{//NAME OF THE HABIT
         type:String,
         required:true
     },

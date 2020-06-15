@@ -4,20 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>habit tracker</title>
+    <script src="https://use.fontawesome.com/b0db3aa219.js"></script>
     <link rel="stylesheet" href="css/home.css">
 </head>
 <body>
     <div>
+
+        <!-- input form for a habit -->
         <h1>input new habit</h1>
         <form method="post" action="/new-habit">
-            <input name="name" type="text" placeholder="enter habit">
+            habit<input name="name" type="text" placeholder="enter habit"><br>
+            <label for="from">Enter start date for habit (by default today)</label>
             <input type="Date" name="from">
             <input type="submit">
         </form>
         
         <h1>
-            Days
+            Select Day
         </h1>
+        <!-- option to go to a specific date and see all habits and mark them  -->
         <ul id="day">
             <a href="/day/6"><li><%= new Date().getDate()-6%>-<%= new Date().getMonth()+1 %> </li></a>
             <a href="/day/5"><li><%= new Date().getDate()-5%>-<%= new Date().getMonth()+1 %>   </li></a>
@@ -25,19 +30,41 @@
             <a href="/day/3"><li><%= new Date().getDate()-3%>-<%= new Date().getMonth()+1 %>   </li></a>
             <a href="/day/2"><li><%= new Date().getDate()-2%>-<%= new Date().getMonth()+1 %>   </li></a>
             <a href="/day/1"><li><%= new Date().getDate()-1%>-<%= new Date().getMonth()+1 %>   </li></a>
-            <a href="/day/0"><li><%= new Date().getDate() %>-<%= new Date().getMonth()+1 %>   </li></a>
+            <a href="/day/0"><li><%= new Date().getDate() %>-<%= new Date().getMonth()+1 %> (today)  </li></a>
         </ul>
-        <h1>All habits</h1>
+        
+
+        <!-- diplay all the habits for the current selected date -->
+        <h1>All habits registered for the date <%= date %> </h1>
         <ul id="habit">
+            <% let count=0; %>
             <% for(habit of habits) {%>
                 <li>
-                    <a href="/habit-show/<%= habit._id %>"><span><%= habit.name %></span></a>
-                    <a href="/habit/?id=<%= habit._id %>&done=1&date=<%= date %>">done</a>
-                    <a href="/habit/?id=<%= habit._id %>&done=2&date=<%= date %>">not done</a>
-                    <a href="/habit/?id=<%= habit._id %>&done=0&date=<%= date %>">none</a>
+                    <a href="/habit-show/<%= habit._id %>"><span class="habit"><%= habit.name %>  </span></a>&emsp;
+                    <%if(status[count]!="done"){%>
+                        <a href="/habit/?id=<%= habit._id %>&done=1&date=<%= date %>">done <i class="fa fa-check-circle-o" aria-hidden="true"></i></a> 
+                    <%}else{%>
+                        <a class="highlight">done <i class="fa fa-check-circle-o" aria-hidden="true"></i></a> 
+                    <%}%>
+                    &nbsp;
+                    <%if(status[count]!="notdone"){%>
+                        <a href="/habit/?id=<%= habit._id %>&done=2&date=<%= date %>">not done <i class="fa fa-times" aria-hidden="true"></i></a> 
+                    <%}else{%>
+                        <a class="highlight">notdone <i class="fa fa-times" aria-hidden="true"></i> </a>
+                    <%}%>
+                    &nbsp;
+                    <%if(status[count]!="none"){%>
+                        <a href="/habit/?id=<%= habit._id %>&done=0&date=<%= date %>">none <i class="fa fa-exclamation-circle" aria-hidden="true"></i> </a>
+                    <%}else{%>
+                        <a class="highlight">none <i class="fa fa-exclamation-circle" aria-hidden="true"></i> </a>
+                    <%}%>
+                    &nbsp;
+                                        
                 </li>
+                <% count++; %>
             <%}%>
         </ul>
+        <h4>Click a habit to observe the 7 days activity</h4>
     </div>
 </body>
 </html>

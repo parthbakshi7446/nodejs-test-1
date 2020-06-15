@@ -3,20 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <title>habit data</title>
 </head>
 <body>
-    <h1>status of habit</h1>
-    <ul id="day">
-        <a ><li><%= new Date().getDate()-6%>-<%= new Date().getMonth()+1 %> ---><%= status[0] %></li></a>
-        <a ><li><%= new Date().getDate()-5%>-<%= new Date().getMonth()+1 %> ---> <%= status[1] %> </li></a>
-        <a ><li><%= new Date().getDate()-4%>-<%= new Date().getMonth()+1 %> ---> <%= status[2] %> </li></a>
-        <a ><li><%= new Date().getDate()-3%>-<%= new Date().getMonth()+1 %> ---> <%= status[3] %> </li></a>
-        <a ><li><%= new Date().getDate()-2%>-<%= new Date().getMonth()+1 %> ---> <%= status[4] %> </li></a>
-        <a ><li><%= new Date().getDate()-1%>-<%= new Date().getMonth()+1 %> ---> <%= status[5] %> </li></a>
-        <a ><li><%= new Date().getDate() %>-<%= new Date().getMonth()+1 %> ---> <%= status[6] %> </li></a>
-    </ul>
-    <a href="/">Home</a>
+    <div>
+        <!-- deatils of a habit with previous 7 days of data -->
+        <h1>status of habit ==> <%= name %></h1>
+        <ul id="day">
+            <a ><li><%= new Date().getDate()-6%>-<%= new Date().getMonth()+1 %> ---><%= status[0] %></li></a>
+            <a ><li><%= new Date().getDate()-5%>-<%= new Date().getMonth()+1 %> ---> <%= status[1] %> </li></a>
+            <a ><li><%= new Date().getDate()-4%>-<%= new Date().getMonth()+1 %> ---> <%= status[2] %> </li></a>
+            <a ><li><%= new Date().getDate()-3%>-<%= new Date().getMonth()+1 %> ---> <%= status[3] %> </li></a>
+            <a ><li><%= new Date().getDate()-2%>-<%= new Date().getMonth()+1 %> ---> <%= status[4] %> </li></a>
+            <a ><li><%= new Date().getDate()-1%>-<%= new Date().getMonth()+1 %> ---> <%= status[5] %> </li></a>
+            <a ><li><%= new Date().getDate() %>-<%= new Date().getMonth()+1 %> ---> <%= status[6] %> </li></a>
+        </ul>
+        
+    </div>
+    <a href="/">Back to Home</a>
+    
     
 </body>
 </html>

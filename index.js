@@ -19,6 +19,7 @@ app.set('views', './views');
 //to extract info from url
 app.use(express.urlencoded());
 
+// routes all requests to indexedDB.js in routes
 app.use('/',require('./routes'));
 
 
